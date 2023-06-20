@@ -125,4 +125,106 @@ class Fish(Animal):
         print(f"{self.name} makes a fish sound.")
 
     def swim(self):
-        print(f"{self.name} is swimming.")    
+        print(f"{self.name} is swimming.")
+        
+class Eagle(Bird):
+    
+    def __init__(self, name, age, wing_size, color,furcount, **kwargs):
+        super().__init__(name ,age,wing_size,**kwargs )
+        self.color=color
+        self.__furcount = furcount
+
+    def furs(self):
+        return (f'{self.__furcount} is your furcount' )
+    
+    def move(self):
+        print(f"{self.name} is flying.")    
+    
+    def eat(self):
+        print(f"{self.name} is eating warms.")
+        
+class Pigeon(Bird):
+    
+    def __init__(self, name, age, wing_size, color, **kwargs):
+        super().__init__(name ,age,wing_size,**kwargs )
+        self.color=color
+
+    def move(self):
+        print(f"{self.name} is flying slowly.")    
+    
+    def eat(self):
+        print(f"{self.name} is eating.")
+
+#Composition       
+class Heart:
+
+    def __init__(self, beat):
+        self.beat = beat
+
+    def beating (self):
+        print(f"heart is beating {self.beat} beats per minute")
+
+class Human(Mammal):
+
+    def __init__(self, name, age, hair_color, nationality, **kwargs):
+        super().__init__(name, age, hair_color, **kwargs)
+        self.nationality = nationality
+        #Composition
+        self.heart = Heart(60)
+
+    def make_sound(self):
+        print(f"{self.name} is speaking.")
+        
+    def drink(self):
+        print(f"{self.name} is drinking.")
+        
+class Cat(Mammal):
+
+    def __init__(self,name ,age ,hair_color ,breed ,**kwargs ):
+        super().__init__(name ,age ,hair_color ,**kwargs)
+        self.breed=breed
+
+    def make_sound(self):
+        print(f"{self.name} is meooowing.")
+        
+    def drink(self):
+        print(f"{self.name} is drinking milk.")
+
+class Lizard(Reptile):
+
+    def __init__(self,name ,age,scale_color,length,**kwargs ):
+        super().__init__(name ,age,scale_color,**kwargs )
+        self.length=length
+    
+    def make_sound(self):
+        print(f"{self.name} is silent.")
+
+class Snake(Reptile):
+
+    def __init__(self,name ,age,scale_color,length,**kwargs ):
+        super().__init__(name ,age,scale_color,**kwargs )
+        self.length=length
+    
+    def make_sound(self):
+        print(f"{self.name} is hissing.")
+
+    def hunt(self):
+        print(f"{self.name} is hunting small animals.")
+
+class Frog(Amphibian):
+
+    def __init__(self,name ,age,skin_color,jump_heigth,**kwargs ):
+        super().__init__(name ,age,skin_color,**kwargs )
+        self.jump_heigth=jump_heigth
+    
+    def make_sound(self):
+        print(f"{self.name} is ghooor ghooring.")
+
+class Shark(Fish):
+    
+    def __init__(self,name, age, skin_color,breed, power, **kwargs):
+        super().__init__(name, age, skin_color,breed,power, **kwargs)
+        self.skin_color = skin_color
+
+    def hunt(self):
+        print(f"{self.name} is hunting animals.")
