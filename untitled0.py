@@ -1,44 +1,52 @@
+#For Abstraction
 from abc import ABC, abstractmethod
 
 class Animal(ABC):
-    def __init__(self, name, age, **kwargs):
-        self._name = name
+    #encapsulation
+    def __init__(self, name, age):
+        self.name = name
         self._age = age
-        self._other_attributes = kwargs
-
+        
+    #Abstraction
     @abstractmethod
+    #polymorphism
     def make_sound(self):
         pass
 
     def eat(self):
-        print(f"{self._name} is eating.")
+        print(f"{self.name} is eating.")
 
     def sleep(self):
-        print(f"{self._name} is sleeping.")
+        print(f"{self.name} is sleeping.")
 
     def drink(self):
-        print(f"{self._name} is drinking.")
+        print(f"{self.name} is drinking.")
 
     def move(self):
-        print(f"{self._name} is moving.")
+        print(f"{self.name} is moving.")
 
-    @property
+    #these two methods access to encapsulation private and protected attributes 
     def name(self):
-        return self._name
+        return self.name
 
-    @property
+    
     def age(self):
         return self._age
 
-    @property
-    def other_attributes(self):
-        return self._other_attributes
+#Aggregation  
+class Feather:
+    def __init__(self, color):
+        self.color = color
 
 class Bird(Animal):
-    def __init__(self, name, age, wing_size, **kwargs):
+    def __init__(self, name, age, wing_size, feather,color, **kwargs):
         super().__init__(name, age,**kwargs)
+        #encapsulation
         self._wing_size = wing_size
-
+        #Aggregation
+        self.feather = feather
+        self.color = color
+    #polymorphism
     def make_sound(self):
         print(f"{self.name} is making sound.")
 
@@ -54,8 +62,9 @@ class Bird(Animal):
 class Mammal(Animal):
     def __init__(self,name ,age,hair_color,**kwargs ):
         super().__init__(name ,age,**kwargs )
+        #encapsulation
         self._hair_color=hair_color
-
+    #polymorphism
     def make_sound(self):
         print(f"{self.name} makes a mammal sound.")
 
@@ -66,13 +75,15 @@ class Mammal(Animal):
         print(f"{self.name} is walking.")
 
     def groom(self):
-        print(f"{self.name} is grooming.")
+        print(f"{self.name} is grooooming.")
 
 class Reptile(Animal):
-    def __init__(self,name ,age,skin_color,**kwargs ):
+    def __init__(self,name ,age,scale_color,**kwargs ):
         super().__init__(name ,age,**kwargs )
-        self._skin_color=skin_color
-
+        #encapsulation
+        self._scale_color=scale_color
+       
+    #polymorphism
     def make_sound(self):
         print(f"{self.name} is making sound.")
 
@@ -88,10 +99,11 @@ class Reptile(Animal):
 class Amphibian(Animal):
     def __init__(self,name ,age ,skin_color ,**kwargs ):
         super().__init__(name ,age ,**kwargs)
+        #encapsulation
         self._skin_color=skin_color
-
+    #polymorphism
     def make_sound(self):
-        print(f"{self.name} is ghoor ghooring.")
+        print(f"{self.name} is making amphibian sound.")
 
     def swim(self):
         print(f"{self.name} is swimming.")
@@ -103,193 +115,14 @@ class Amphibian(Animal):
         print(f"{self.name} is breathing.")
 
 class Fish(Animal):
-    def __init__(self,name ,age,breed,**kwargs ):
+    def __init__(self,name ,age,breed,power,**kwargs ):
         super().__init__(name ,age,**kwargs )
+        #encapsulation
         self._breed= breed
-
+        self.power = power
+    #polymorphism
     def make_sound(self):
         print(f"{self.name} makes a fish sound.")
 
     def swim(self):
-        print(f"{self.name} is swimming.")
-        
-class Eagle(Birds):
-    
-    def __init__(self, **kwargs):
-        super().__init__()
-
-    def (self):
-        print('')    
-    
-    def (self):
-        print('')
-        
-    def (self):
-        print('') 
-        
-    def (self):
-        print('') 
-    
-    def (self):
-        print('')
-        
-class Pigeon(Birds):
-    
-    def __init__(self, **kwargs):
-        super().__init__()
-
-    def (self):
-        print('')    
-    
-    def (self):
-        print('')
-        
-    def (self):
-        print('') 
-        
-    def (self):
-        print('') 
-    
-    def (self):
-        print('')
-        
-class Human(Mammals):
-    
-    def __init__(self, **kwargs):
-        super().__init__()
-
-    def (self):
-        print('')    
-    
-    def (self):
-        print('')
-        
-    def (self):
-        print('') 
-        
-    def (self):
-        print('') 
-    
-    def (self):
-        print('')
-        
-class Snake(Reptiles):
-    
-    def __init__(self, **kwargs):
-        super().__init__()
-
-    def (self):
-        print('')    
-    
-    def (self):
-        print('')
-        
-    def (self):
-        print('') 
-        
-    def (self):
-        print('') 
-    
-    def (self):
-        print('')
-        
-class Turtle(Reptiles):
-    
-    def __init__(self, **kwargs):
-        super().__init__()
-
-    def (self):
-        print('')    
-    
-    def (self):
-        print('')
-        
-    def (self):
-        print('') 
-        
-    def (self):
-        print('') 
-    
-    def (self):
-        print('')
-    
-class Frog(Amphibians):
-    
-    def __init__(self, **kwargs):
-        super().__init__()
-
-    def (self):
-        print('')    
-    
-    def (self):
-        print('')
-        
-    def (self):
-        print('') 
-        
-    def (self):
-        print('') 
-    
-    def (self):
-        print('')
-        
-class Shark(Fish):
-    
-    def __init__(self, **kwargs):
-        super().__init__()
-
-    def (self):
-        print('')    
-    
-    def (self):
-        print('')
-        
-    def (self):
-        print('') 
-        
-    def (self):
-        print('') 
-    
-    def (self):
-        print('')
-        
-class Wale(Fish):
-    
-    def __init__(self, **kwargs):
-        super().__init__()
-
-    def (self):
-        print('')    
-    
-    def (self):
-        print('')
-        
-    def (self):
-        print('') 
-        
-    def (self):
-        print('') 
-    
-    def (self):
-        print('')
-        
-class Zoo():
-    
-    def __init__(self, **kwargs):
-        super().__init__()
-
-    def (self):
-        print('')    
-    
-    def (self):
-        print('')
-        
-    def (self):
-        print('') 
-        
-    def (self):
-        print('') 
-    
-    def (self):
-        print('')
-    
+        print(f"{self.name} is swimming.")    
